@@ -1,3 +1,6 @@
+using LABMedicine.Model;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+string connectionString = "Server=DESKTOP-CB1HVBB\\SQLEXPRESS;Database=labmedicinebd;Trusted_Connection=True;TrustServerCertificate=True;";
+//Inje��o de Depencencia do Context
+builder.Services.AddDbContext<labmedicinebdContext>(o => o.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 
