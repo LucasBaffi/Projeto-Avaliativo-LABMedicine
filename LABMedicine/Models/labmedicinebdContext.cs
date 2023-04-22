@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LABMedicine.Controllers;
+using LABMedicine.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LABMedicine.Model
+namespace LABMedicine.Models
 {
-    public class labmedicinebdContext : DbContext
+    public class LabmedicinebdContext : DbContext
     {
-        public labmedicinebdContext(DbContextOptions<labmedicinebdContext> options) : base(options)
+        public LabmedicinebdContext(DbContextOptions<LabmedicinebdContext> options) : base(options)
         {
         }
 
-        // public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<PacienteModel> Pacientes { get; set; }
+        public DbSet<MedicoModel> Medicos { get; set; }
+         public DbSet<EnfermeiroModel> Enfermeiros { get; set; }
+
+        
     }
 }
