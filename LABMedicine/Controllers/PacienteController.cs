@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LABMedicine.DTO;
 using LABMedicine.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LABMedicine.Controllers
 {
@@ -115,13 +116,74 @@ namespace LABMedicine.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<IEnumerable<PacienteDTO>> GetPacientes([FromQuery] StatusAtendimento? status)
+        {
+            IQueryable<PacienteModel> query = _labmedicinebdContext.Pacientes;
+            if (status.HasValue)
+            {
+                query = query.Where(p => p.StatusAtendimento == status.Value);
+            }
 
+            var pacientes = query
+                .Select(p => new PacienteDTO
+                {
+                    Id = p.Id,
+                    NomeCompleto = p.NomeCompleto,
+                    Alergias = p.Alergias,
+                    CuidadosEspecificos = p.CuidadosEspecificos,
+                    ContatoEmergencia = p.ContatoEmergencia,
+                    Convenio = p.Convenio,
+                    StatusAtendimento = p.StatusAtendimento,
 
+                })
+                .ToList();
 
+            return Ok(pacientes);
+        }
+        [HttpGet("{id}")]
+        public ActionResult<PacienteDTO> GetPacienteById(int id)
+        {
+            var paciente = _labmedicinebdContext.Pacientes.Find(id);
 
+            if (paciente == null)
+            {
+                return NotFound($"Não foi encontrado nenhum paciente com o id {id}.");
+            }
 
+            var pacienteDto = new PacienteDTO
+            {
+                Id = paciente.Id,
+                NomeCompleto = paciente.NomeCompleto,
+                Alergias = paciente.Alergias,
+                CuidadosEspecificos = paciente.CuidadosEspecificos,
+                ContatoEmergencia = paciente.ContatoEmergencia,
+                Convenio = paciente.Convenio,
+                StatusAtendimento = paciente.StatusAtendimento,
+                CPF = paciente.CPF,
+                Genero = paciente.Genero,
+                DataNascimento = paciente.DataNascimento,
+                Telefone = paciente.Telefone
+            };
 
+            return Ok(pacienteDto);
+        }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var paciente = _labmedicinebdContext.Pacientes.Find(id);
+            if (paciente == null)
+            {
+                return NotFound("Paciente nmao encontrado");
+            }
+
+            _labmedicinebdContext.Pacientes.Remove(paciente);
+            _labmedicinebdContext.SaveChanges();
+
+            return NoContent();
+        }
 
     }
 }
