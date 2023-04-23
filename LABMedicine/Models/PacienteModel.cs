@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using LABMedicine.Controllers;
 using LABMedicine.Models;
 
+using System.Text.Json.Serialization;
+
 namespace LABMedicine.Models
 {
     [Table("Paciente")]
@@ -35,12 +37,16 @@ namespace LABMedicine.Models
 
     }
 
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum StatusAtendimento
     {
-        AguardandoAtendimento,
-        EmAtendimento,
-        Atendido,
-        NaoAtendido
+        Atendido ,
+        NaoAtendido ,
+        EmAtendimento ,
+
+        AguardandoAtendimento 
     }
+
+
 
 }

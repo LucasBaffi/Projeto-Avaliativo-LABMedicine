@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LABMedicine.Models;
 
@@ -24,39 +25,41 @@ namespace LABMedicine.Models
 
         public int TotalAtendimentos { get; set; }
     }
+
+
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum EspecializacaoClinica
+    {
+        ClinicoGeral ,
+        Anestesista,
+        Dermatologia,
+        Ginecologia,
+        Neurologia,
+        Pediatria,
+        Psiquiatria,
+        Ortopedia
+    }
+     [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum EstadoSistema
+    {
+        Ativo,
+        Inativo
+    }
+
+
+    public class AtendimentoMedico
+    {
+        public int Id { get; set; }
+        public DateTime DataHora { get; set; }
+
+        public int IdMedico { get; set; }
+        public MedicoModel Medico { get; set; }
+
+        public int IdPaciente { get; set; }
+        public PacienteModel Paciente { get; set; }
+
+    }
+
 }
-
-public enum EspecializacaoClinica
-{
-    ClinicoGeral,
-    Anestesista,
-    Dermatologia,
-    Ginecologia,
-    Neurologia,
-    Pediatria,
-    Psiquiatria,
-    Ortopedia
-}
-
-public enum EstadoSistema
-{
-    Ativo,
-    Inativo
-}
-
-public class AtendimentoMedico
-{
-    public int Id { get; set; }
-    public DateTime DataHora { get; set; }
-
-    public int IdMedico { get; set; }
-    public MedicoModel Medico { get; set; }
-
-    public int IdPaciente { get; set; }
-    public PacienteModel Paciente { get; set; }
-
-}
-
-
 
 
