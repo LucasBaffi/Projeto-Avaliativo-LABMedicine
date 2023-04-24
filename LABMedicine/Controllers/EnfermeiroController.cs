@@ -90,5 +90,45 @@ namespace LABMedicine.Controllers
 
             return Ok(enfermeiroDto);
         }
+        [HttpGet]
+        public ActionResult<IEnumerable<EnfermeiroModel>> Get()
+        {
+            var enfermeiros = _labmedicinebdContext.Enfermeiros.ToList();
+            if (enfermeiros.Count == 0)
+            {
+                return NotFound("Nenhum enfermeiro encontrado.");
+            }
+            return Ok(enfermeiros);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<EnfermeiroModel>> GetById(int id)
+        {
+            var enfermeiro = _labmedicinebdContext.Enfermeiros.Find(id);
+            if (enfermeiro == null)
+            {
+                return NotFound("Nenhum enfermeiro encontrado.");
+            }
+            return Ok(enfermeiro);
+        }
+        [HttpDelete("{id}")]
+
+        public ActionResult Delete(int id)
+        {
+            var enfermeiro = _labmedicinebdContext.Enfermeiros.Find(id);
+            if (enfermeiro == null)
+            {
+                return NotFound($"Não foi encontrado nenhum médico com o id {id}.");
+            }
+
+            _labmedicinebdContext.Enfermeiros.Remove(enfermeiro);
+            _labmedicinebdContext.SaveChanges();
+
+            return NoContent();
+        }
+
+
+
+
     }
 }

@@ -17,6 +17,7 @@ namespace LABMedicine.Models
         public DbSet<PacienteModel> Pacientes { get; set; }
         public DbSet<MedicoModel> Medicos { get; set; }
          public DbSet<EnfermeiroModel> Enfermeiros { get; set; }
+         public DbSet<AtendimentoModel> Atendimento { get; set; }
 
         
     }

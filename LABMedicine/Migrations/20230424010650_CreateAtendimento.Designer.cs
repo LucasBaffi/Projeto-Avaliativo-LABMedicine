@@ -4,6 +4,7 @@ using LABMedicine.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LABMedicine.Migrations
 {
     [DbContext(typeof(LabmedicinebdContext))]
-    partial class labmedicinebdContextModelSnapshot : ModelSnapshot
+    [Migration("20230424010650_CreateAtendimento")]
+    partial class CreateAtendimento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
