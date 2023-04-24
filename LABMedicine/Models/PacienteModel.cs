@@ -33,9 +33,21 @@ namespace LABMedicine.Models
 
         [Column("TotalAtendimentosRealizados")]
         public int TotalAtendimentosRealizados { get; set; }
-
-
+      
+        
     }
+}
+
+
+
+
+
+
+
+
+
+
+    
 
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum StatusAtendimento
@@ -49,4 +61,3 @@ namespace LABMedicine.Models
 
 
 
-}
