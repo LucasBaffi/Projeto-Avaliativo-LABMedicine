@@ -1,3 +1,4 @@
+using LABMedicine.Data;
 using LABMedicine.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 string connectionString = "Server=DESKTOP-CB1HVBB\\SQLEXPRESS;Database=labmedicinebd;Trusted_Connection=True;TrustServerCertificate=True;";
 //Inje��o de Depencencia do Context
-builder.Services.AddDbContext<LabmedicinebdContext>(o => o.UseSqlServer(connectionString));
+builder.Services.AddDbContext<LabmedicinebdContext>(options => options.UseSqlServer(connectionString));
 
 
 var app = builder.Build();
@@ -29,5 +30,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var context = new LabmedicinebdContext(new DbContextOptionsBuilder<LabmedicinebdContext>().UseSqlServer(connectionString).Options))
+{
+    DataSeed.SeedData(context);
+}
 
 app.Run();
