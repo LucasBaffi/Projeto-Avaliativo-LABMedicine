@@ -11,43 +11,52 @@ namespace LABMedicine.Controllers
     [Route("api/[controller]")]
     public class AtendimentoController : ControllerBase
     {
-         private readonly LabmedicinebdContext _labmedicinebdContext;
+        private readonly LabmedicinebdContext _labmedicinebdContext;
 
         public AtendimentoController(LabmedicinebdContext labmedicinebdContext)
         {
             _labmedicinebdContext = labmedicinebdContext;
         }
-        [HttpPost]
-        public ActionResult<AtendimentoModel> RealizarAtendimento(int IdPaciente, int IdMedico, string descricao)
+        [HttpPut]
+        public ActionResult<AtendimentoModel> RealizarAtendimento(int IdPaciente, int IdMedico)
         {
-            var paciente =  _labmedicinebdContext.Pacientes.Find(IdPaciente);
-            var medico =  _labmedicinebdContext.Medicos.Find(IdMedico);
+            if (IdPaciente <= 0 || IdMedico <= 0  )
+            {
+                return BadRequest("Os parâmetros IdPaciente e IdMedico são obrigatórios e devem ser maiores que zero.");
+            }
+
+
+            var paciente = _labmedicinebdContext.Pacientes.Find(IdPaciente);
+            var medico = _labmedicinebdContext.Medicos.Find(IdMedico);
 
             if (paciente == null || medico == null)
             {
                 return NotFound();
             }
 
+
             // Incrementa os atributos de atendimento do paciente e médico envolvidos
             paciente.TotalAtendimentosRealizados++;
             medico.TotalAtendimentos++;
 
-            // Altera o status de atendimento do paciente para "Atendido"
+           
+            {
+           // Altera o status de atendimento do paciente para "Atendido"
             paciente.StatusAtendimento = StatusAtendimento.Atendido;
+}  
 
             var atendimento = new AtendimentoModel
             {
-                Descricao = descricao,
+
                 MedicoModel = medico,
                 PacienteModel = paciente,
                 DataAtendimento = DateTime.Now
             };
 
             _labmedicinebdContext.Atendimento.Add(atendimento);
-           _labmedicinebdContext.SaveChangesAsync();
+            _labmedicinebdContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(RealizarAtendimento), new { id = atendimento.Id }, atendimento);
         }
     }
 }
-    
