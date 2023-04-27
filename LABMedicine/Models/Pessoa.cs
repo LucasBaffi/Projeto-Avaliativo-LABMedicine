@@ -22,7 +22,7 @@ namespace LABMedicine.Models
         [Required]
 
         [DataType(DataType.Date)]
-        public DateTime DataNascimento { get; set; }
+        public new DateTime DataNascimento { get; set; }
         [Required]
         public string CPF { get; set; }
         [Required]

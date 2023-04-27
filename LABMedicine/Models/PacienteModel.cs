@@ -36,18 +36,7 @@ namespace LABMedicine.Models
       
         
     }
-}
-
-
-
-
-
-
-
-
-
-
-    
+}    
 
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum StatusAtendimento

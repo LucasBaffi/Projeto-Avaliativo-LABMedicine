@@ -1,4 +1,4 @@
-using LABMedicine.Data;
+// using LABMedicine.Data;
 using LABMedicine.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,15 +25,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-using (var context = new LabmedicinebdContext(new DbContextOptionsBuilder<LabmedicinebdContext>().UseSqlServer(connectionString).Options))
-{
-    DataSeed.SeedData(context);
-}
-
+// using (var context = new LabmedicinebdContext(new DbContextOptionsBuilder<LabmedicinebdContext>().UseSqlServer(connectionString).Options))
+// {
+//     DataSeed.SeedData(context);
+// }
 app.Run();
