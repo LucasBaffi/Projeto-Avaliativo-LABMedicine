@@ -1,51 +1,52 @@
-# Projeto-Avaliativo-LABMedicine
-Projeto Avaliativo usando as tecnologias C#, .Net e SQL Server
-
-#Criar api para VS Code
-
-dotnet new webapi -o NOME-DA-SUA-API
+<p>Projeto Avaliativo LABMedicine</p>
 
 
-# Modulo1-Semana9-Projeto-01
-Modulo1-Semana9-Projeto-01
+O Projeto Avaliativo LABMedicine é uma solução criada para gerenciar atendimentos médicos em uma clínica. Ele permite cadastrar pacientes e médicos, agendar atendimentos, registrar informações sobre os atendimentos realizados e consultar histórico de atendimentos dos pacientes.
+
+Tecnologias Utilizadas
+
+C#
+ASP.NET Core
+Entity Framework Core
+SQL Server
+Swagger
+
+Funcionalidades
+
+Pacientes
+Cadastrar paciente
+Consultar paciente pelo ID
+Consultar lista de pacientes
+Atualizar informações do paciente
+Excluir paciente
+
+Médicos
+
+Cadastrar médico
+Consultar médico pelo ID
+Consultar lista de médicos
+Atualizar informações do médico
+Excluir médico
+
+Atendimentos
+
+Agendar atendimento
+Consultar atendimento pelo ID
+Consultar lista de atendimentos
+Registrar informações do atendimento
+Cancelar atendimento
 
 
-# VSCode Comands
+O projeto LABMedicine consiste em um sistema de gerenciamento de atendimentos médicos para clínicas e laboratórios. O objetivo principal do sistema é auxiliar no agendamento e acompanhamento dos atendimentos dos pacientes, além de possibilitar a geração de relatórios e estatísticas para análise dos dados.
 
-dotnet ef migrations add InitialCreate
-dotnet ef database update
+O sistema é desenvolvido em C# utilizando o framework .NET e a plataforma ASP.NET Core para a construção da API RESTful. O banco de dados utilizado é o SQL Server e o ORM utilizado é o Entity Framework Core. Além disso, o projeto segue os padrões de arquitetura em camadas, utilizando as camadas de apresentação, aplicação, domínio e infraestrutura.
 
-## Instalar o EF
+Na camada de apresentação, é utilizada a biblioteca Swagger para documentação e teste da API, além da implementação de autenticação e autorização através do ASP.NET Identity. Na camada de aplicação, são implementados os serviços responsáveis pela regra de negócio do sistema, bem como a implementação de mapeamento de objetos utilizando a biblioteca AutoMapper.
 
-Caso o EF não estiver instalado na versão do vs code precisa instalar 
+Na camada de domínio, são implementadas as entidades do sistema, como Paciente, Médico e Atendimento, além de suas respectivas interfaces e validações. Na camada de infraestrutura, são implementados os repositórios que fazem a comunicação com o banco de dados, bem como a implementação do DbContext.
 
-### .NET 7
+O projeto ainda conta com testes unitários implementados utilizando o framework xUnit.net e a biblioteca Moq para simulação de objetos. Além disso, é utilizado o padrão de injeção de dependência para facilitar a manutenção e extensibilidade do sistema.
 
-dotnet tool install --global dotnet-ef
+Para executar o sistema, basta clonar o repositório, configurar a string de conexão com o banco de dados no arquivo appsettings.json e executar o comando dotnet run. O sistema estará disponível na porta 5000 (http://localhost:5000) e a documentação da API estará disponível na rota /swagger (http://localhost:5000/swagger/index.html).
 
-### .NET 6
-
-dotnet tool install --global dotnet-ef --version 6.*
-
-### .NET 5
-
-dotnet tool install --global dotnet-ef --version 5.*
-
-### .NET Core 3
-
-dotnet tool install --global dotnet-ef --version 3.*
-
-
-
-
-# VS 2022 Commands
-
-Add-Migration InitialCreate
-
-Update-Database
-
-anotacoes ******************************
-
-frombory é no post
-
-aula segunda 2 horas 55 minutes
+Entre as possíveis melhorias para o sistema, pode-se destacar a implementação de uma camada de apresentação em front-end para melhorar a experiência do usuário, além da implementação de novas funcionalidades, como o agendamento de consultas online e o envio de lembretes por e-mail para os pacientes.
