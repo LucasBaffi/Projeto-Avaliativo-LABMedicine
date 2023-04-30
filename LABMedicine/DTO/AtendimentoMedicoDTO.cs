@@ -6,11 +6,10 @@ using LABMedicine.Models;
 
 namespace LABMedicine.DTO
 {
-    public class AtendimentoDTO
+    public class AtendimentoMedicoDTO
     {
-        public int IdMedico { get; set; }
-      
-     
+           public MedicoModel Medico { get; set; }
+       
+        public string NomeCompletoMedico => Medico?.NomeCompleto;
     }
 }
-

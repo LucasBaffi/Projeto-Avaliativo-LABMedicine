@@ -47,18 +47,7 @@ namespace LABMedicine.Models
     }
 
 
-    public class AtendimentoMedico
-    {
-        public int Id { get; set; }
-        public DateTime DataHora { get; set; }
 
-        public int IdMedico { get; set; }
-        public MedicoModel Medico { get; set; }
-
-        public int IdPaciente { get; set; }
-        public PacienteModel Paciente { get; set; }
-
-    }
 
 }
 
