@@ -8,15 +8,28 @@ C# ASP.NET Core Entity Framework Core SQL Server Swagger
 
 Funcionalidades
 
-Pacientes Cadastrar paciente Consultar paciente pelo ID Consultar lista de pacientes Atualizar informações do paciente Excluir paciente
+Pacientes Cadastrar
+paciente Consultar
+paciente pelo ID Consultar lista de
+pacientes Atualizar informações do paciente 
+Excluir paciente
 
 Médicos
 
-Cadastrar médico Consultar médico pelo ID Consultar lista de médicos Atualizar informações do médico Excluir médico
+Cadastrar médico 
+Consultar médico pelo ID 
+Consultar lista de médicos 
+Atualizar informações do médico
+Excluir médico
 
 Atendimentos
 
-Agendar atendimento Consultar atendimento pelo ID Consultar lista de atendimentos Registrar informações do atendimento Cancelar atendimento
+Agendar atendimento 
+Consultar atendimento pelo ID
+Consultar lista de atendimentos 
+Registrar informações do atendimento
+Cancelar atendimento
+
 
 O projeto LABMedicine consiste em um sistema de gerenciamento de atendimentos médicos para clínicas e laboratórios. O objetivo principal do sistema é auxiliar no agendamento e acompanhamento dos atendimentos dos pacientes, além de possibilitar a geração de relatórios e estatísticas para análise dos dados.
 
