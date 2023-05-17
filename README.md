@@ -39,8 +39,6 @@ Na camada de apresentação, é utilizada a biblioteca Swagger para documentaç�
 
 Na camada de domínio, são implementadas as entidades do sistema, como Paciente, Médico e Atendimento, além de suas respectivas interfaces e validações. Na camada de infraestrutura, são implementados os repositórios que fazem a comunicação com o banco de dados, bem como a implementação do DbContext.
 
-O projeto ainda conta com testes unitários implementados utilizando o framework xUnit.net e a biblioteca Moq para simulação de objetos. Além disso, é utilizado o padrão de injeção de dependência para facilitar a manutenção e extensibilidade do sistema.
-
 Para executar o sistema, basta clonar o repositório, configurar a string de conexão com o banco de dados no arquivo appsettings.json e executar o comando dotnet run. O sistema estará disponível na porta 5000 (http://localhost:5000) e a documentação da API estará disponível na rota /swagger (http://localhost:5000/swagger/index.html).
 
 Entre as possíveis melhorias para o sistema, pode-se destacar a implementação de uma camada de apresentação em front-end para melhorar a experiência do usuário, além da implementação de novas funcionalidades, como o agendamento de consultas online e o envio de lembretes por e-mail para os pacientes.
